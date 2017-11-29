@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercícios 1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<h1>Melhorando o JavaScript com exercícios</h1>
+<h3>Exercício 1</h3>
+<p>
+    <span id="dia">Hoje é </span> <br/>		
+    Horário atual: <span id="hora"></span> <br/>
+    Data: <span id="fulldate"></span>
+</p>
+
+<script type="text/javascript">
+	var today = new Date();
+	var days = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+	var day = today.getDate();
+	var month = today.getMonth() + 1;
+	var year = today.getFullYear();
+	document.getElementById("dia").innerHTML += " " + days[ today.getDay() ];
+	document.getElementById("hora").innerHTML = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	document.getElementById("fulldate").innerHTML = day + "-"+ month + "-" + year;
+
+</script>
+</body>
+</html>
