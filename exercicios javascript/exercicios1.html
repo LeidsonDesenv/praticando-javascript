@@ -26,16 +26,18 @@
 <h1>Melhorando o JavaScript com exercícios</h1>
 <h3>Exercício 1</h3>
 <p>
+		Verificando dia, horário e data via javascript. <br/>
     <span id="dia">Hoje é </span> <br/>
     Horário atual: <span id="hora"></span> <br/>
     Data: <span id="fulldate"></span>
 </p>
 <h3>Exercício 2</h3>
+<p>Fazer uma animação de um bloco continuo</p>
 <div id="painel">
 	<div id="animation">
 	</div>
 </div>
-<button type="button" name="button" onclick="moveBox()">Fazer Animação</button>
+<button type="button" name="btnAnimation" id="btnAnimation" >Fazer Animação</button>
 
 <h3>Exercícios 3</h3>
 <p>
@@ -46,14 +48,14 @@ Verificando o ano onde Janeiro começa numa segunda entre 1980 e 2017.
 <div class="">
 <h3>Exercício 4</h3>
 <p>Gerando um numero aleatório e comparando com o passado pelo usuário.</p>
-<button type="button" onclick="compareRandomNumber()">Clique e dê um palpite</button>
+<button type="button" id="btnPalpite" name="btnPalpite">Clique e dê um palpite</button>
 </div>
 
 <h3>Exercício 5</h3>
 <p>
 Função que verifica quantos dias faltam para o natal. <br/>
 <span id="resposta"></span>
-<button type="button" onclick="howManyDayUntilChristmas('resposta');">Veja qnt falta para o natal</button>
+<button type="button" id="btnNatal">Veja qnt falta para o natal</button>
 </p>
 
 <h3>Exercício 6</h3>
@@ -71,96 +73,6 @@ Função que verifica quantos dias faltam para o natal. <br/>
 
 
 <!--vo deixar o script na mesma página para facilitar a consulta quando precisar revisar -->
-<script type="text/javascript">
-	var today = new Date();
-	var days = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
-	var day = today.getDate();
-	var month = today.getMonth() + 1;
-	var year = today.getFullYear();
-	document.getElementById("dia").innerHTML += " " + days[ today.getDay() ];
-	document.getElementById("hora").innerHTML = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-	document.getElementById("fulldate").innerHTML = day + "-"+ month + "-" + year;
-
-//function que move uma animação da esquerda para a direita
-	function moveBox(){
-		var  anime = document.getElementById("animation");
-		var itemPosition = 0;
-		var id = setInterval(frame, 5);
-		function frame(){
-			if(itemPosition == 450){
-				clearInterval(id);
-			}
-			else{
-				itemPosition++;
-				anime.style.left = itemPosition + "px";
-			}
-		}
-	}
- /*function  que retorna o ano onde Janeiro começa em uma segunda
-@param startYear ano inicial do intervalo
-@param endYear ano final do intervalo
- */
-	function getJanuaryStartInMonday(startYear, endYear){
-		var years = "";
-		for (var year = startYear; year <= endYear; year++) {
-			var day = new Date(year, 0, 1);
-			if(day.getDay() === 1){
-				years += "Janeiro do ano "+ year + " começa em uma segunda\n";
-			}
-		}
-		alert(years);
-	}
-//gera um número aleatório de 0 a 10 e compara com o informado pelo usuário
-	function compareRandomNumber(){
-		var shot = prompt("Digite seu palpite");
-		var number = Math.floor(Math.random() * 10);
-		if(shot == number){
-			alert("Acertou Miserávi");
-		}else {
-			alert("Mais sorte na próxima vez");
-		}
-	}
-
-	/*calcula quantos dias falta até o natal
-	@param result retorna o valor para um campo de texto informado pelo usuário
-	*/
-	function howManyDayUntilChristmas(result){
-		var today = new Date();
-		var christmasDay = new Date(today.getFullYear() , 11, 25);
-		var one_day = 1000 * 60 * 60 * 24;
-		var remainingDays = Math.ceil( (christmasDay.getTime() - today.getTime() ) / one_day );
-		document.getElementById(result).innerHTML = "Faltam " + remainingDays + " dias para o natal";
-	}
-
-	/*calcula de várias formas 2 numeros
-@param number1 primeiro numero para calculo
-@param number2 segundo numero para calculo
-@parm text texto de retorno
-	*/
-	function calcManyWays(number1 , number2, text){
-
-			var num1 = document.getElementById(number1).value;
-			var num2 = document.getElementById(number2).value;
-			if(isNaN(num1) || isNaN(num2)){
-				document.getElementById(text).innerHTML = "O valores precisam ser numéricos";
-			}
-			else{
-				var resultSum = parseFloat(num1) + parseFloat(num2);
-				var resultSub =  parseFloat(num1) - parseFloat(num2);
-				var resultMult =  parseFloat(num1) * parseFloat(num2);
-				var resultDiv = 0;
-				if(num2 != 0){
-					 resultDiv = parseFloat(num1) / parseFloat(num2);
-				}else {
-					resultDiv = "Obs.: Impossível divisão por 0";
-				}
-				document.getElementById(text).innerHTML ="A soma é "+resultSum +
-				", a subtração é "+ resultSub +
-				", a multiplicação é "+ resultMult +
-				", e a divisão é "+ resultDiv;
-		}
-	}
-
-</script>
+<script type="text/javascript" src="js/scriptsEx1a6.js"></script>
 </body>
 </html>
